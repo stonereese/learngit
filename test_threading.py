@@ -19,15 +19,16 @@ def loop1():
 
 def main():
     print("starting at:", time.ctime())
-    for i in range(5):
-        loop0()
+    # for i in range(5):#将要进行多任务的函数,不要使用for循环
+    loop0()
     # loop1()
     print("all done at:", time.ctime())
 
 
 if __name__ == '__main__':
-    p = Pool(2)
-    p.apply_async(main, ())
+    p = Pool(5)
+    for i in range(5):
+        p.apply_async(main, ())
     p.close()
     p.join()
 
