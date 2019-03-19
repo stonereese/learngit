@@ -2,6 +2,7 @@
 import time
 import threading
 # import os
+from multiprocessing import Pool
 
 
 def loop0():
@@ -24,5 +25,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    p = Pool(4)
+    p.apply_async(main, ())
+    p.close()
+    p.join()
 
