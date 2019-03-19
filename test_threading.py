@@ -19,13 +19,14 @@ def loop1():
 
 def main():
     print("starting at:", time.ctime())
-    loop0()
-    loop1()
+    for i in range(5):
+        loop0()
+    # loop1()
     print("all done at:", time.ctime())
 
 
 if __name__ == '__main__':
-    p = Pool(4)
+    p = Pool(2)
     p.apply_async(main, ())
     p.close()
     p.join()
